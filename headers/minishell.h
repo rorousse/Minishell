@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 16:00:55 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/04 16:30:43 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 */
 
 char	*env_get_value(char **env, char *name);
+int		env_get_pos(char **env, char *name);
 
 /*
 ** FT_CD_C

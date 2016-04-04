@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:36:31 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 16:03:43 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/04 16:26:34 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	ft_cd(char **commande)
 	if (commande[2] == NULL)
 	{
 		if ((access(commande[1], F_OK) == 0) && (access(commande[1], X_OK) == 0))
-			ft_putstr("fichier accessible\n");
+		{
+			chdir(commande[1]);
+			// on met a jour les variables d'env pwd et oldpwd
+		}
 		else
 			ft_putstr("Erreur : invalid directory\n");
 	}
