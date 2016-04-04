@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   traitement_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 11:28:04 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 15:25:14 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/04 15:21:27 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/04 15:31:30 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-static void	free_copy(char **env)
+static void	free_split(char **commande)
 {
 	int	i;
 
 	i = 0;
-	while (env[i] != NULL)
+	while (commande[i] != NULL)
 	{
-		free(env[i]);
+		free(commande[i]);
 		i++;
 	}
-	free(env[i]);
-	free(env);
+	free(commande[i]);
+	free(commande);
 }
 
-int			main(int argc, char **argv, char **environ)
+void		traitement_line(char *line)
 {
-	char **env;
+	char **commande;
 
-	int i = 0;
-	(void)argc;
-	(void)argv;
-	env = ft_split_copy(environ);
-	prompt(env);
-	free_copy(env);
-	return (0);
+	commande = ft_strsplit(line, ' ');
+	if (ft_strchr(*commande, '/') != NULL)
+		ft_putstr("ah, un programme ! On le traitera plus tard\n");
+	else
+		ft_putstr("hm, serait ce autre chose ? cherchons\n");
+	free_split(commande);
 }

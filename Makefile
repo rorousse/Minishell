@@ -6,7 +6,7 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/04 13:15:43 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/04 15:28:21 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,9 +17,10 @@ OBJ_PATH=objs/
 LIBS= libft/libft.a
 SRCCAT= $(addprefix $(SRC_PATH), $(SRC))
 OBJ= $(SRCCAT:.c=.o)
-SRC =	main.c			\
-		prompt.c		\
-		environnement.c	\
+SRC =	main.c				\
+		prompt.c			\
+		environnement.c		\
+		traitement_line.c	\
 
 all : lib $(NAME)
 

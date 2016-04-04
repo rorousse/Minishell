@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 12:19:53 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/04 15:27:47 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,11 @@ char	*env_get_value(char **env, char *name);
 */
 
 int		prompt(char **env);
+
+/*
+** TRAITEMENT_LINE
+*/
+
+void	traitement_line(char *line);
 
 #endif

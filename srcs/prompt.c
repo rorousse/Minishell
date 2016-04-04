@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 15:08:29 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/04 15:27:10 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int	prompt(char **env)
 		ft_putstr("\033[32m");
 		ft_putstr(env_get_value(env, "PWD"));
 		ft_putstr(": $>\033[37m");
-		get_next_line(0, &line);
+		if (get_next_line(0, &line) < 0)
+		{
+			ft_putstr("Erreur : Fin du programme\n");
+			return (0);
+		}
+		traitement_line(line);
 	}
 	free(line);
 	return (0);
