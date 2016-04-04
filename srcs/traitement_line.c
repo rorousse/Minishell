@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:21:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 15:31:30 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/04 16:07:50 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,15 @@ void		traitement_line(char *line)
 	char **commande;
 
 	commande = ft_strsplit(line, ' ');
-	if (ft_strchr(*commande, '/') != NULL)
-		ft_putstr("ah, un programme ! On le traitera plus tard\n");
-	else
-		ft_putstr("hm, serait ce autre chose ? cherchons\n");
+	if (*commande != NULL)
+	{
+		if (ft_strchr(*commande, '/') != NULL)
+			ft_putstr("ah, un programme ! On le traitera plus tard\n");
+		else
+		{
+			if (ft_strcmp("cd", commande[0]) == 0)
+				ft_cd(commande);
+		}
+	}
 	free_split(commande);
 }

@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 16:00:55 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/04 15:36:31 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/04 16:03:43 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../headers/minishell.h"
 
-# include "../libft/libft.h"
-
-/*
-** ENVIRONNEMENT_C
-*/
-
-char	*env_get_value(char **env, char *name);
-
-/*
-** FT_CD_C
-*/
-
-void	ft_cd(char **commande);
-
-/*
-** PROMPT_C
-*/
-
-int		prompt(char **env);
-
-/*
-** TRAITEMENT_LINE
-*/
-
-void	traitement_line(char *line);
-
-#endif
+void	ft_cd(char **commande)
+{
+	if (commande[2] == NULL)
+	{
+		if ((access(commande[1], F_OK) == 0) && (access(commande[1], X_OK) == 0))
+			ft_putstr("fichier accessible\n");
+		else
+			ft_putstr("Erreur : invalid directory\n");
+	}
+	else
+		ft_putstr("Erreur : nombre d'arguments invalides\n");
+}
