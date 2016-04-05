@@ -6,7 +6,7 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/04 16:00:18 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/05 14:14:30 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,6 +22,8 @@ SRC =	main.c				\
 		environnement.c		\
 		traitement_line.c	\
 		ft_cd.c				\
+		ft_env.c			\
+		ft_unsetenv.c		\
 
 all : lib $(NAME)
 

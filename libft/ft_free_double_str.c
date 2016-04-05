@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_char_cmp.c                                  :+:      :+:    :+:   */
+/*   ft_free_double_str.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 12:11:13 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 12:47:34 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/05 10:18:48 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/05 13:26:56 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_str_char_cmp(char *str, char *str2, char c)
+void	ft_free_double_str(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] && str2[i] && str[i] == str2[i] && str[i + 1] != c && str2[i + 1] != c)
-		i++;
-	return (str[i] - str2[i]);
+	if (str != NULL)
+	{
+		while (str[i] != NULL)
+		{
+			free(str[i]);
+			i++;
+		}
+		free(str[i]);
+		free(str);
+	}
 }
-		

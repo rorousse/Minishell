@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 15:27:10 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/05 13:14:06 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	prompt(char **env)
 			ft_putstr("Erreur : Fin du programme\n");
 			return (0);
 		}
-		traitement_line(line);
+		traitement_line(env, line);
 	}
 	free(line);
 	return (0);

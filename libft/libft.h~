@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:37:20 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 10:38:10 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/05 10:30:45 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,5 @@ extern int			get_next_line(int const fd, char **line);
 extern void			ft_strpushback(char *str, int n);
 extern void			ft_free_double_str(char **str);
 extern int			ft_get_size_double_str(char **str);
-extern void			ft_insert_double_str(char ***str, char *new);
 
 #endif

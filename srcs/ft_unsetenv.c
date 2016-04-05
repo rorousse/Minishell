@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   ft_unsetenv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 15:36:31 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 13:48:30 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/05 14:02:14 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/05 14:16:56 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	ft_cd(char **env, char **commande)
+void	ft_unsetenv(char **env, char **commande)
 {
-	char	*path;
+	int	pos;
 
-	path = (char*)malloc(256 * sizeof(char));
 	if (commande[2] == NULL)
 	{
-		if ((access(commande[1], F_OK) == 0) && (access(commande[1], X_OK) == 0))
+		pos = env_get_pos(env, commande[1]);
+		if (pos != -1)
 		{
-			getcwd(path, 256);
-			insert_env(env, "OLDPWD", path);
-			chdir(commande[1]);
-			path = (char*)malloc(256 * sizeof(char));
-			getcwd(path, 256);
-			insert_env(env, "PWD", path);
+			free(env[pos]);
+			while (env[pos] != NULL)
+			{
+				env[pos] = env[pos + 1];
+				pos++;
+			}
 		}
 		else
-			ft_putstr("Erreur : invalid directory\n");
+			ft_putstr("Erreur : variable inexistante\n");
 	}
 	else
 		ft_putstr("Erreur : nombre d'arguments invalides\n");
