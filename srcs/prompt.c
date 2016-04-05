@@ -6,13 +6,13 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 13:14:06 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/05 15:18:04 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	prompt(char **env)
+int	prompt(char ***env)
 {
 	char	*line;
 
@@ -21,7 +21,7 @@ int	prompt(char **env)
 	{
 		free(line);
 		ft_putstr("\033[32m");
-		ft_putstr(env_get_value(env, "PWD"));
+		ft_putstr(env_get_value(*env, "PWD"));
 		ft_putstr(": $>\033[37m");
 		if (get_next_line(0, &line) < 0)
 		{

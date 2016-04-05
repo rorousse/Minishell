@@ -6,20 +6,11 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:08:55 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 13:51:09 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/05 15:44:35 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
-
-static char *adapt_value(char *value)
-{
-	char	*str;
-
-	str = ft_strjoin("=", value);
-	free(value);
-	return (str);
-}
 
 char		*env_get_value(char **env, char *name)
 {
@@ -54,23 +45,25 @@ int			env_get_pos(char **env, char *name)
 	return (i);
 }
 
-void		insert_env(char **env, char *name, char *value)
+void		insert_env(char ***env, char *name, char *value)
 {
 	char	*concat;
 	int		pos;
+	char	*valuead;
 
-	value = adapt_value(value);
-	pos = env_get_pos(env, name);
+	valuead = ft_strjoin("=", value);
+	pos = env_get_pos(*env, name);
 	if (pos == -1)
 	{
-		concat = ft_strjoin(name, value);
-		ft_insert_double_str(&env, concat);
+		concat = ft_strjoin(name, valuead);
+		ft_insert_double_str(env, concat);
+		free(concat);
 	}
 	else
 	{
-		free(env[pos]);
-		env[pos] = ft_strjoin(name, value);
+		free(env[0][pos]);
+		env[0][pos] = ft_strjoin(name, valuead);
 	}
-	free(value);
+	free(valuead);
 }
 		

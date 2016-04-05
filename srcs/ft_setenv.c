@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_char_cmp.c                                  :+:      :+:    :+:   */
+/*   ft_setenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 12:11:13 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 12:46:38 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/05 14:29:47 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/05 15:24:56 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../headers/minishell.h"
 
-int	ft_str_char_cmp(char *str, char *str2, char c)
+void	ft_setenv(char ***env, char **commande)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] && str2[i] && str1[i] == str2[i] && str[i + 1] != c && str2[i + 1] != c)
-		i++;
-	return (str[i] - str2[i]);
+	if (commande[1] != NULL && commande[2] != NULL && commande[3] == NULL)
+		insert_env(env, commande[1], commande[2]);
+	else
+		ft_putstr("Erreur : nombre d'arguments invalides\n");
 }
-		

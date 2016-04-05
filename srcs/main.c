@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:28:04 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 13:12:35 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/05 15:17:32 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			main(int argc, char **argv, char **environ)
 	(void)argc;
 	(void)argv;
 	env = ft_split_copy(environ);
-	prompt(env);
+	prompt(&env);
 	ft_free_double_str(env);
 	return (0);
 }

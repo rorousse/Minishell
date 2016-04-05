@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 10:32:45 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 13:50:49 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/05 15:45:16 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,15 @@ void	ft_insert_double_str(char ***str, char *new)
 	int		i;
 
 	i = 0;
-	copy = (char**)malloc(ft_get_size_double_str(*str) * sizeof(char*));
-	while ((*str)[i] != NULL)
+	copy = (char**)malloc((ft_get_size_double_str(*str) + 2) * sizeof(char*));
+	while (str[0][i] != NULL)
 	{
-		copy[i] = (*str)[i];
+		copy[i] = ft_strdup(str[0][i]);
 		i++;
 	}
-	copy[i] = NULL;
-	free(*str);
-	*str = (char**)malloc((i + 2) * sizeof(char*));
+	copy[i] = ft_strdup(new);
+	copy[i + 1] = NULL;
 	i = 0;
-	while (copy[i] != NULL)
-	{
-		(*str)[i] = copy[i];
-		i++;
-	}
-	(*str)[i] = ft_strdup(new);
-	(*str)[i + 1] = NULL;
+	ft_free_double_str(*str);
+	*str = copy;
 }
-
-/*
-** Cette fonction prend en argument un pointeur sur un char**, et insere un char* a la fin de celui-ci.
-** Pour que l'opertaions soit possible, le char** doit avoir ete alloue dynamiquement.
-*/ 
