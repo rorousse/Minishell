@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsetenv.c                                      :+:      :+:    :+:   */
+/*   ft_replace_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/05 14:02:14 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 11:28:58 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/06 10:06:25 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/06 10:09:20 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minishell.h"
-
-void	ft_unsetenv(char **env, char **commande)
+void	ft_replace_char(char *str, char c, char new)
 {
-	int	pos;
-
-	if (commande[1] != NULL && commande[2] == NULL)
+	while (*str)
 	{
-		pos = env_get_pos(env, commande[1]);
-		if (pos != -1)
-			ft_delete_double_str(env, pos);
-		else
-			ft_putstr("Erreur : variable inexistante\n");
+		if (*str == c)
+			*str = new;
+		str++;
 	}
-	else
-		ft_putstr("Erreur : nombre d'arguments invalides\n");
 }

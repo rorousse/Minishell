@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsetenv.c                                      :+:      :+:    :+:   */
+/*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/05 14:02:14 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 11:28:58 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/05 21:23:26 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/05 22:29:12 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	ft_unsetenv(char **env, char **commande)
+static void	exec_fils(char *program, char **commande, char **env)
 {
-	int	pos;
+	char	**args;
 
-	if (commande[1] != NULL && commande[2] == NULL)
+	args = &(commande[0]);
+	execve(program, args, env);
+}
+
+static void	exec_pere()
+{
+	wait(NULL);
+}
+
+void	ft_exec(char *program, char **commande, char**env)
+{
+	pid_t	mypid;
+	if ((access(program, F_OK) == 0) && (access(program, X_OK) == 0))
 	{
-		pos = env_get_pos(env, commande[1]);
-		if (pos != -1)
-			ft_delete_double_str(env, pos);
+		mypid = fork();
+		if (mypid == 0)
+			exec_fils(program, commande, env);
 		else
-			ft_putstr("Erreur : variable inexistante\n");
+			exec_pere();
 	}
 	else
-		ft_putstr("Erreur : nombre d'arguments invalides\n");
+		ft_putstr("Erreur : programme innaccessible\n");
 }

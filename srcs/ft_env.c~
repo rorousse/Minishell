@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:47:36 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 11:36:38 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/06 10:51:13 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@ void		ft_env(char **env, char **commande)
 		*tempenv = NULL;
 		ft_exec(commande[2], &(commande[2]), tempenv);
 		free(tempenv);
-	}
-	else if (ft_strcmp(commande[1], "-u") == 0)
-	{
-		tempenv = ft_split_copy(env);
-		ft_delete_double_str(tempenv, env_get_pos(tempenv, commande[2]));
-		ft_exec(commande[3], &(commande[3]), tempenv);
-		ft_free_double_str(tempenv);
 	}
 	else
 		ft_putstr("Env : erreur\n");

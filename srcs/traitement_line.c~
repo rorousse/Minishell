@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:21:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 13:45:28 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/06 13:42:10 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,17 @@ void		traitement_line(char ***env, char *line)
 	{
 		if (ft_strchr(*commande, '/') != NULL)
 			ft_exec(commande[0], commande, *env);
-		else if (ft_strcmp("cd", commande[0]) == 0)
-			ft_cd(env, commande);
-		else if (ft_strcmp("env", commande[0]) == 0)
-			ft_env(*env, commande);
-		else if (ft_strcmp("unsetenv", commande[0]) == 0)
-			ft_unsetenv(*env, commande);
-		else if(ft_strcmp("setenv", commande[0]) == 0)
-			ft_setenv(env, commande);
-		else 
-			pathing(*env, commande);
+		else
+		{
+			if (ft_strcmp("cd", commande[0]) == 0)
+				ft_cd(env, commande);
+			else if (ft_strcmp("env", commande[0]) == 0)
+				ft_env(*env, commande);
+			else if (ft_strcmp("unsetenv", commande[0]) == 0)
+				ft_unsetenv(*env, commande);
+			else if(ft_strcmp("setenv", commande[0]) == 0)
+				ft_setenv(env, commande);
+		}
 	}
 	ft_free_double_str(commande);
 }

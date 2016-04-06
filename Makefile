@@ -6,7 +6,7 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/05 14:37:38 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/05 22:21:19 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,8 +25,9 @@ SRC =	main.c				\
 		ft_env.c			\
 		ft_unsetenv.c		\
 		ft_setenv.c			\
+		ft_exec.c			\
 
-all : lib $(NAME)
+all : lib $(NAME) clean
 
 $(NAME) : $(OBJ)
 	gcc -Wall -Werror -Wextra $(OBJ) $(LIBS) -g -o $(NAME)

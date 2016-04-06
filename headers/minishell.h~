@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 10:51:40 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/05 22:21:05 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_cd(char ***env, char **commande);
 ** FT_ENV_C
 */
 
-void	ft_env(char **env, char **commande);
+void	ft_env(char **env);
 
 /*
 ** FT_EXEC_C
