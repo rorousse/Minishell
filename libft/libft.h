@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:37:20 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 11:29:35 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/08 12:06:41 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <inttypes.h>
 
 # define BUFF_SIZE 32
+
 typedef struct		s_list
 {
 	void			*content;
@@ -29,14 +30,14 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct      s_buffer
+typedef struct		s_buffer
 {
-    char            *data;
-    char            *init;
-    int             fd;
-    struct s_buffer *next;
-    struct s_buffer *prev;
-}                   t_buffer;
+	char			*data;
+	char			*init;
+	int				fd;
+	struct s_buffer	*next;
+	struct s_buffer	*prev;
+}					t_buffer;
 
 extern size_t		ft_strlen(const char *s);
 extern char			*ft_strdup(char *s);

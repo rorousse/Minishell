@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 14:02:14 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 11:28:58 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/08 10:06:55 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_unsetenv(char **env, char **commande)
 		if (pos != -1)
 			ft_delete_double_str(env, pos);
 		else
-			ft_putstr("Erreur : variable inexistante\n");
+			ft_putstr_fd("Erreur : variable inexistante\n", 2);
 	}
 	else
-		ft_putstr("Erreur : nombre d'arguments invalides\n");
+		ft_putstr_fd("Erreur : nombre d'arguments invalides\n", 2);
 }

@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:37:20 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 11:27:38 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/06 11:29:35 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ extern void			ft_free_double_str(char **str);
 extern int			ft_get_size_double_str(char **str);
 extern void			ft_insert_double_str(char ***str, char *new);
 extern void			ft_replace_char(char *str, char c, char new);
-extern void			ft_delte_double_str(char **str, int pos);
+extern void			ft_delete_double_str(char **str, int pos);
 
 #endif

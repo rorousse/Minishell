@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:08:55 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 15:44:35 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/08 10:58:15 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char		*env_get_value(char **env, char *name)
 		y++;
 	return (&(env[i][y + 1]));
 }
-
 
 int			env_get_pos(char **env, char *name)
 {
@@ -66,4 +65,3 @@ void		insert_env(char ***env, char *name, char *value)
 	}
 	free(valuead);
 }
-		

@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 03:53:37 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 13:43:52 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/06 17:35:24 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	*ft_size_words(char const *s, char c)
 	int y;
 	int index;
 
+	tab = NULL;
 	ft_fuck_norminette(&i, &index, 1);
 	if (*s == '\0')
 		return (NULL);
@@ -66,9 +67,7 @@ static int	*ft_size_words(char const *s, char c)
 			y = 0;
 			index++;
 			while (s[i] != c && s[i])
-			{
 				ft_fuck_norminette(&i, &y, 2);
-			}
 			i--;
 			tab[index] = y;
 		}
@@ -116,7 +115,7 @@ char		**ft_strsplit(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	nb = ft_size_words(s, c);
-	if (!(table = malloc((ft_count_words(s, c) + 1) * sizeof(char*))))
+	if (!(table = (char**)malloc((ft_count_words(s, c) + 1) * sizeof(char*))))
 		return (NULL);
 	while (i < (ft_count_words(s, c)) && nb != NULL)
 	{

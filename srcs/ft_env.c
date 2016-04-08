@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:47:36 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/06 11:36:38 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/08 11:00:58 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	affichage(char **env)
 {
 	int i;
 
-    i = 0;
-    while (env[i] != NULL)
-    {
-        ft_putstr(env[i]);
-        ft_putchar('\n');
-        i++;
-    }
+	i = 0;
+	while (env[i] != NULL)
+	{
+		ft_putstr(env[i]);
+		ft_putchar('\n');
+		i++;
+	}
 }
 
 void		ft_env(char **env, char **commande)
@@ -46,5 +46,5 @@ void		ft_env(char **env, char **commande)
 		ft_free_double_str(tempenv);
 	}
 	else
-		ft_putstr("Env : erreur\n");
+		ft_putstr_fd("Env : erreur\n", 2);
 }

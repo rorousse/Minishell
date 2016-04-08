@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:36:31 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 15:37:28 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/08 10:57:00 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_cd(char ***env, char **commande)
 
 	if (commande[1] != NULL && commande[2] == NULL)
 	{
-		if ((access(commande[1], F_OK) == 0) && (access(commande[1], X_OK) == 0))
+		if ((access(commande[1], F_OK) == 0) &&
+		(access(commande[1], X_OK) == 0))
 		{
 			path = (char*)malloc(256 * sizeof(char));
 			getcwd(path, 256);
@@ -29,8 +30,8 @@ void	ft_cd(char ***env, char **commande)
 			free(path);
 		}
 		else
-			ft_putstr("Erreur : invalid directory\n");
+			ft_putstr_fd("Error : No such file or directory\n", 2);
 	}
 	else
-		ft_putstr("Erreur : nombre d'arguments invalides\n");
+		ft_putstr_fd("Error : Invalid arguments number\n", 2);
 }

@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 21:23:26 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/05 22:29:12 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/08 10:59:44 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ static void	exec_fils(char *program, char **commande, char **env)
 	execve(program, args, env);
 }
 
-static void	exec_pere()
+static void	exec_pere(void)
 {
 	wait(NULL);
 }
 
-void	ft_exec(char *program, char **commande, char**env)
+void		ft_exec(char *program, char **commande, char **env)
 {
 	pid_t	mypid;
+
 	if ((access(program, F_OK) == 0) && (access(program, X_OK) == 0))
 	{
 		mypid = fork();
@@ -37,5 +38,5 @@ void	ft_exec(char *program, char **commande, char**env)
 			exec_pere();
 	}
 	else
-		ft_putstr("Erreur : programme innaccessible\n");
+		ft_putstr_fd("Erreur : programme innaccessible\n", 2);
 }
