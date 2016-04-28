@@ -6,7 +6,7 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/28 20:55:06 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/28 21:00:35 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -28,9 +28,9 @@ SRC = $(addprefix $(SRCPATH), $(SRCNAME))
 
 OBJNAME = $(SRCNAME:.c=.o)
 
-OBJPATH = ./objs/
+OBJ_PATH = ./objs/
 
-OBJ = $(addprefix $(OBJPATH), $(OBJNAME))
+OBJ = $(addprefix $(OBJ_PATH), $(OBJNAME))
 
 NAME = Minishell
 
@@ -38,11 +38,11 @@ FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME):	create_obj	$(OBJ)
+$(NAME): create_obj $(OBJ)
 	make -C libft/
 	gcc $(FLAG) $(OBJ) -I ./headers/ -lncurses libft/libft.a -o $(NAME)
 
-$(OBJPATH)%.o:	$(SRCPATH)%.c
+$(OBJ_PATH)%.o:	$(SRCPATH)%.c
 	gcc $(FLAGS) -I ./headers/ -c $< -o $@
 
 create_obj :
@@ -53,7 +53,7 @@ clean:
 	make -C ./libft/ clean
 
 fclean: clean
-	/bin /rm $(NAME)
+	/bin/rm $(NAME)
 	make -C ./libft/ fclean
 
 re:	fclean  all

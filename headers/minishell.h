@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/28 20:42:28 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/28 21:00:01 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <term.h>
 # include <termios.h>
 # include <termcap.h>
+# include <curses.h>
 
 struct	s_shell
 {
