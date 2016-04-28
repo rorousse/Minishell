@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:47:36 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/08 11:00:58 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/24 16:18:59 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static void	affichage(char **env)
 	}
 }
 
-void		ft_env(char **env, char **commande)
+void		ft_env(t_shell *myshell, char **commande)
 {
 	char	**tempenv;
 
 	if (commande[1] == NULL)
-		affichage(env);
+		affichage(myshell->env);
 	else if (ft_strcmp(commande[1], "-i") == 0)
 	{
 		tempenv = (char**)malloc(1 * sizeof(char*));
@@ -40,7 +40,7 @@ void		ft_env(char **env, char **commande)
 	}
 	else if (ft_strcmp(commande[1], "-u") == 0)
 	{
-		tempenv = ft_split_copy(env);
+		tempenv = ft_split_copy(myshell->env);
 		ft_delete_double_str(tempenv, env_get_pos(tempenv, commande[2]));
 		ft_exec(commande[3], &(commande[3]), tempenv);
 		ft_free_double_str(tempenv);

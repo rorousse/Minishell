@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:37:20 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/08 12:06:41 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/28 19:55:01 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ extern int			ft_strnequ(char const *s1, char const *s2, size_t n);
 extern char			*ft_strsub(char const *s, unsigned int start, size_t len);
 extern char			*ft_strjoin(char const *s1, char const *s2);
 extern char			*ft_strtrim(char const *s);
-extern void			ft_putchar(int c);
+extern int			ft_putchar(int c);
 extern void			ft_putstr(char const *s);
 extern char			**ft_strsplit(char const *s, char c);
 extern void			ft_putendl(char const *s);

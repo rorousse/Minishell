@@ -6,13 +6,14 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 02:26:31 by rorousse          #+#    #+#             */
-/*   Updated: 2015/12/14 11:04:26 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/28 19:54:14 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(int c)
+int		ft_putchar(int c)
 {
 	write(1, &c, 1);
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:36:31 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/08 10:57:00 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/24 16:30:47 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	ft_cd(char ***env, char **commande)
+void	ft_cd(t_shell *myshell, char **commande)
 {
 	char	*path;
 
@@ -23,10 +23,10 @@ void	ft_cd(char ***env, char **commande)
 		{
 			path = (char*)malloc(256 * sizeof(char));
 			getcwd(path, 256);
-			insert_env(env, "OLDPWD", path);
+			insert_env(&(myshell->env), "OLDPWD", path);
 			chdir(commande[1]);
 			getcwd(path, 256);
-			insert_env(env, "PWD", path);
+			insert_env(&(myshell->env), "PWD", path);
 			free(path);
 		}
 		else

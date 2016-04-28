@@ -6,44 +6,55 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/05 22:21:19 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/28 20:55:06 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
+SRCNAME = 	main.c				\
+			environnement.c		\
+			ft_cd.c				\
+			ft_env.c			\
+			ft_exec.c			\
+			ft_setenv.c			\
+			ft_unsetenv.c		\
+			prompt.c			\
+			traitement_line.c	\
+			caps.c				\
+			ft_capture.c		\
+
+SRCPATH = ./srcs/
+
+SRC = $(addprefix $(SRCPATH), $(SRCNAME))
+
+OBJNAME = $(SRCNAME:.c=.o)
+
+OBJPATH = ./objs/
+
+OBJ = $(addprefix $(OBJPATH), $(OBJNAME))
+
 NAME = Minishell
-HEADER = libft/libft.h headers/minishell.h
-SRC_PATH=srcs/
-OBJ_PATH=objs/
-LIBS= libft/libft.a
-SRCCAT= $(addprefix $(SRC_PATH), $(SRC))
-OBJ= $(SRCCAT:.c=.o)
-SRC =	main.c				\
-		prompt.c			\
-		environnement.c		\
-		traitement_line.c	\
-		ft_cd.c				\
-		ft_env.c			\
-		ft_unsetenv.c		\
-		ft_setenv.c			\
-		ft_exec.c			\
 
-all : lib $(NAME) clean
+FLAGS = -Wall -Werror -Wextra
 
-$(NAME) : $(OBJ)
-	gcc -Wall -Werror -Wextra $(OBJ) $(LIBS) -g -o $(NAME)
+all: $(NAME)
 
-lib :
+$(NAME):	create_obj	$(OBJ)
 	make -C libft/
+	gcc $(FLAG) $(OBJ) -I ./headers/ -lncurses libft/libft.a -o $(NAME)
 
-$(OBJ_PATH)%.o:$(SRC_PATH)%.c
-	gcc -Wall -Werror -Wextra -g -o $@ -c $<
+$(OBJPATH)%.o:	$(SRCPATH)%.c
+	gcc $(FLAGS) -I ./headers/ -c $< -o $@
 
-clean :
-	/bin/rm -f $(OBJ)
-	make clean -C libft/
+create_obj :
+	mkdir -p $(OBJ_PATH)
 
-fclean : clean
-	/bin/rm -f $(NAME)
-	make fclean -C libft/
+clean:
+	/bin/rm -rf $(OBJ_PATH)
+	make -C ./libft/ clean
 
-re : fclean all
+fclean: clean
+	/bin /rm $(NAME)
+	make -C ./libft/ fclean
+
+re:	fclean  all
+

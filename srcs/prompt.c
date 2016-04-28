@@ -6,33 +6,37 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/08 11:00:12 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/28 19:29:54 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	prompt(char ***env)
+int	prompt(t_shell *myshell)
 {
-	char	*line;
+	struct termios	term;
 
-	line = ft_strdup("");
-	while (ft_strcmp(line, "exit") != 0)
+	init_term(&term);
+	while (ft_strcmp(myshell->line, "exit") != 0)
 	{
-		free(line);
+		// preparation du prompt
+		free(myshell->line);
 		ft_putstr("\033[32m");
-		line = (char*)malloc(256 * sizeof(char));
-		getcwd(line, 256);
-		ft_putstr(line);
-		free(line);
+		myshell->line = (char*)malloc(256 * sizeof(char));
+		getcwd(myshell->line, 256);
+		ft_putstr(myshell->line);
+		free(myshell->line);
+		myshell->line = ft_strdup("");
 		ft_putstr(": $>\033[37m");
-		if (get_next_line(0, &line) < 0)
-		{
-			ft_putstr("Erreur : Fin du programme\n");
-			return (0);
-		}
-		traitement_line(env, line);
+ 
+		//  capture de la ligne
+
+		ft_capture(myshell);
+
+		// traitement de la ligne
+		traitement_line(myshell); 
 	}
-	free(line);
+	close_term(&term);
+	free(myshell->line);
 	return (0);
 }
