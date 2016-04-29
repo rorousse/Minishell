@@ -6,7 +6,7 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/29 10:35:58 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/29 11:50:45 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,6 +22,7 @@ SRCNAME = 	main.c					\
 			caps.c					\
 			ft_capture.c			\
 			multiples_lines.c		\
+			ft_historique.c			\
 
 SRCPATH = ./srcs/
 

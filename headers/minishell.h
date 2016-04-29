@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 11:12:05 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 13:21:10 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <termios.h>
 # include <termcap.h>
 # include <curses.h>
+# include <fcntl.h>
 
 struct  s_historique
 {
@@ -30,11 +31,11 @@ typedef struct s_historique t_historique;
 
 struct	s_shell
 {
-	char			**historique;
 	char			**env;
 	int				curseur;
 	char			*line;
-	t_historique	historique;
+	int				fd_histo;
+	t_historique	*historique;
 };
 
 typedef struct s_shell t_shell;
@@ -77,6 +78,15 @@ void	ft_env(t_shell *myshell, char **commande);
 */
 
 void	ft_exec(char *program, char **commande, char **env);
+
+/*
+** FT_HISTORIQUE_C
+*/
+
+void	rembobinage(t_shell *myshell);
+void	fill_historique(t_shell *myshell);
+void	free_historique(t_shell *myshell);
+void	stockage(t_shell *myshell);
 
 /*
 ** FT_UNSETENV_C

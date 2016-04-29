@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 10:41:21 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 15:28:29 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int	prompt(t_shell *myshell)
 		//  capture de la ligne
 
 		ft_capture(myshell);
+
+		// stockage dans l'historique
+		
+		stockage(myshell);
 
 		// traitement de la ligne
 		check_multiples_lines(myshell); 
