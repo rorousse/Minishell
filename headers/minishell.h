@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 13:21:10 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 18:30:18 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ struct	s_shell
 
 typedef struct s_shell t_shell;
 
+// FICHIER DE TEST A SUPPRIMER A LA FIN
+
+/*
+** TEST_C
+*/
+
+void	print_buffer(char buffer[4]);
+
 /*
 ** CAPS_C
 */
@@ -60,6 +68,7 @@ void	insert_env(char ***env, char *name, char *value);
 */
 
 void	ft_capture(t_shell *myshell);
+void	use_caps(char *caps);
 
 /*
 ** FT_CD_C
@@ -99,6 +108,22 @@ void	ft_unsetenv(char **env, char **commande);
 */
 
 void	ft_setenv(char ***env, char **commande);
+
+/*
+** LINE_C
+*/
+
+void	print_key(char buffer[4], t_shell *myshell);
+void	up_historique(t_shell *myshell);
+void	down_historique(t_shell *myshell);
+void	move_right(t_shell *myshell);
+void	move_left(t_shell *myshell);
+
+/*
+** LINE_2_C
+*/
+
+void	delete_car(t_shell *myshell);
 
 /*
 ** MULTIPLES_LINES_C

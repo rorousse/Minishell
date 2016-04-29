@@ -6,11 +6,23 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 17:51:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 15:38:48 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 19:40:53 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	init_capture(char buffer[4])
+{
+	int		i;
+
+	i = 0;
+	while(i < 4)
+	{
+		buffer[i] = 0;
+		i++;
+	}
+}
 
 void	use_caps(char *caps)
 {
@@ -23,75 +35,26 @@ void	use_caps(char *caps)
 void	ft_capture(t_shell *myshell)
 {
 	char	buffer[4];
-	int		i;
 
 	while (buffer[0] != 10)
 	{
-		i = 0;
-		while(i < 4)
-		{
-			buffer[i] = 0;
-			i++;
-		}
+		init_capture(buffer);
 		read(0, buffer, 4);
-		if (ft_isprint(buffer[0]))
+		if (ft_isprint(buffer[0])) // si la touche est affichable
+			print_key(buffer, myshell);
+		else if (buffer[0] == 27 && buffer[1] == 91) // si la touche est une fleche
 		{
-			use_caps("im");
-			ft_putchar(buffer[0]);
-			insertion_line(myshell, buffer[0]); // On insere la touche dans la ligne du shell
-			(myshell->curseur)++;
-			use_caps("ei");
-		} 
-		else if (buffer[0] == 27 && buffer[1] == 91)
-		{
-			if (buffer[2] == 68 && myshell->curseur > 0)
-			{
-				(myshell->curseur)--;
-				use_caps("le");
-			}
-			else if (buffer[2] == 67 && myshell->curseur < (int)ft_strlen(myshell->line))
-			{
-				(myshell->curseur)++;
-				use_caps("nd");
-			}
-			else if (buffer[2] == 65)
-			{
-				free(myshell->line);
-				myshell->line = ft_strdup((myshell->historique)->commande);
-				while (myshell->curseur > 0)
-				{
-					use_caps("le");
-					(myshell->curseur)--;
-				}
-				use_caps("ce");
-				write(1, myshell->line, ft_strlen(myshell->line));
-				myshell->curseur = ft_strlen(myshell->line);
-				if ((myshell->historique)->prec != NULL)
-					myshell->historique = (myshell->historique)->prec;
-			}
-			else if (buffer[2] == 66)
-            {
-                free(myshell->line);
-                myshell->line = ft_strdup((myshell->historique)->commande);
-                while (myshell->curseur > 0)
-                {
-                    use_caps("le");
-                    (myshell->curseur)--;
-                }
-                use_caps("ce");
-                write(1, myshell->line, ft_strlen(myshell->line));
-                myshell->curseur = ft_strlen(myshell->line);
-				if ((myshell->historique)->next != NULL)
-					myshell->historique = (myshell->historique)->next;
-            }
+			if (buffer[2] == 68 && myshell->curseur > 0)// si la touche est gauche
+				move_left(myshell);
+			else if (buffer[2] == 67 && myshell->curseur < (int)ft_strlen(myshell->line)) //droite
+				move_right(myshell);
+			else if (buffer[2] == 65 && myshell->historique != NULL) //haut
+				up_historique(myshell);
+			else if (buffer[2] == 66 && myshell->historique != NULL) //bas
+				down_historique(myshell);
 		}
 		else if (buffer[0] == 127 && myshell->curseur > 0)
-		{
-			(myshell->curseur)--;
-			deletion_line(myshell);
-			use_caps("le");
-			use_caps("dc");
-		}
+			delete_car(myshell);
 	}
 	ft_putchar('\n');
 	myshell->curseur = 0;
