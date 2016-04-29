@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 10:37:43 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 11:12:05 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,22 @@
 # include <termcap.h>
 # include <curses.h>
 
+struct  s_historique
+{
+	char	*commande;
+	struct s_historique	*prec;
+	struct s_historique *next;
+};
+
+typedef struct s_historique t_historique;
+
 struct	s_shell
 {
-	char	**historique;
-	char	**env;
-	int		curseur;
-	char	*line;
+	char			**historique;
+	char			**env;
+	int				curseur;
+	char			*line;
+	t_historique	historique;
 };
 
 typedef struct s_shell t_shell;
