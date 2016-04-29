@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/28 19:29:54 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 10:41:21 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	prompt(t_shell *myshell)
 		ft_capture(myshell);
 
 		// traitement de la ligne
-		traitement_line(myshell); 
+		check_multiples_lines(myshell); 
 	}
 	close_term(&term);
 	free(myshell->line);

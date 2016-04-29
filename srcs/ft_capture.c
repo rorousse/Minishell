@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 17:51:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/28 20:43:45 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 10:19:23 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_capture(t_shell *myshell)
 			i++;
 		}
 		read(0, buffer, 4);
-		if (ft_isalnum(buffer[0])) // si la touche est alphanumerique
+		if (ft_isprint(buffer[0]))
 		{
 			cmd = tgetstr("im", NULL);
 			tputs(cmd, 0, &(ft_putchar));

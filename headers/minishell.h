@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/28 21:00:01 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 10:37:43 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ void	ft_unsetenv(char **env, char **commande);
 */
 
 void	ft_setenv(char ***env, char **commande);
+
+/*
+** MULTIPLES_LINES_C
+*/
+
+void	check_multiples_lines(t_shell *myshell);
 
 /*
 ** PROMPT_C

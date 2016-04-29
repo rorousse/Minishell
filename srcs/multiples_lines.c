@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   multiples_lines.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 11:28:04 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 10:32:23 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/29 10:36:48 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/29 10:42:11 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minishell.h"
 
-int			main(int argc, char **argv, char **environ)
+#include "minishell.h"
+
+void	check_multiples_lines(t_shell *myshell)
 {
-	t_shell	myshell;;
+	char	**multiples;
+	int		i;
 
-	(void)argc;
-	(void)argv;
-	myshell.env = ft_split_copy(environ);
-	myshell.curseur = 0;
-	myshell.line = ft_strdup("");
-	prompt(&myshell);
-	ft_free_double_str(myshell.env);
-	return (0);
+	i = 0;
+	multiples = ft_strsplit(myshell->line, ';');
+	while (multiples[i] != NULL && ft_strcmp(myshell->line, "exit") != 0)
+	{
+		free(myshell->line);
+		myshell->line = ft_strdup(multiples[i]);
+		traitement_line(myshell);
+		i++;
+	}
+	ft_free_double_str(multiples);
 }

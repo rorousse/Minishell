@@ -6,21 +6,22 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/28 21:00:35 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/29 10:35:58 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-SRCNAME = 	main.c				\
-			environnement.c		\
-			ft_cd.c				\
-			ft_env.c			\
-			ft_exec.c			\
-			ft_setenv.c			\
-			ft_unsetenv.c		\
-			prompt.c			\
-			traitement_line.c	\
-			caps.c				\
-			ft_capture.c		\
+SRCNAME = 	main.c					\
+			environnement.c			\
+			ft_cd.c					\
+			ft_env.c				\
+			ft_exec.c				\
+			ft_setenv.c				\
+			ft_unsetenv.c			\
+			prompt.c				\
+			traitement_line.c		\
+			caps.c					\
+			ft_capture.c			\
+			multiples_lines.c		\
 
 SRCPATH = ./srcs/
 
