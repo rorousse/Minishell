@@ -6,7 +6,7 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/29 18:24:39 by rorousse         ###   ########.fr        #
+#    Updated: 2016/04/30 14:56:38 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,6 +26,7 @@ SRCNAME = 	main.c					\
 			line.c					\
 			line_2.c				\
 			test.c					\
+			ft_signal.c				\
 
 SRCPATH = ./srcs/
 

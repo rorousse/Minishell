@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 09:15:11 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/04 14:58:40 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/30 14:01:11 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int				get_next_line(int const fd, char **line)
 
 	if (line == NULL || fd < 0 || ft_init_buff(&buffer, fd) == -1)
 		return (-1);
-	*line = ft_strdup("\0");
+	*line = ft_strdup("");
 	if ((ret_read = ft_load_buff(buffer->data, line)) != 0)
 		return (ret_read);
 	ret_chr = NULL;

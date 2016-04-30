@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 17:51:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 19:40:53 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/30 16:45:59 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	ft_capture(t_shell *myshell)
 {
 	char	buffer[4];
 
-	while (buffer[0] != 10)
+	interruption = 0;
+	while (buffer[0] != 10 && (interruption == 0))
 	{
 		init_capture(buffer);
 		read(0, buffer, 4);
@@ -55,6 +56,7 @@ void	ft_capture(t_shell *myshell)
 		}
 		else if (buffer[0] == 127 && myshell->curseur > 0)
 			delete_car(myshell);
+//		print_buffer(buffer);
 	}
 	ft_putchar('\n');
 	myshell->curseur = 0;

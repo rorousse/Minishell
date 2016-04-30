@@ -6,13 +6,25 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/29 15:28:29 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/30 16:56:25 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	prompt(t_shell *myshell)
+void	aff_prompt(void)
+{
+	char	*prompt;
+
+	ft_putstr("\033[32m");
+	prompt = (char*)malloc(256 * sizeof(char));
+	getcwd(prompt, 256);
+	ft_putstr(prompt);
+	ft_putstr(": $>\033[37m");
+	free(prompt);
+}
+
+int		prompt(t_shell *myshell)
 {
 	struct termios	term;
 
@@ -20,14 +32,9 @@ int	prompt(t_shell *myshell)
 	while (ft_strcmp(myshell->line, "exit") != 0)
 	{
 		// preparation du prompt
-		free(myshell->line);
-		ft_putstr("\033[32m");
-		myshell->line = (char*)malloc(256 * sizeof(char));
-		getcwd(myshell->line, 256);
-		ft_putstr(myshell->line);
+		aff_prompt();
 		free(myshell->line);
 		myshell->line = ft_strdup("");
-		ft_putstr(": $>\033[37m");
  
 		//  capture de la ligne
 
