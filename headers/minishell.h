@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 11:42:55 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/01 12:31:34 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,10 @@ void	move_left(void);
 */
 
 void	delete_car(void);
+void	start_line(void);
+void	end_line(void);
+void	right_word(void);
+void	left_word(void);
 
 /*
 ** MULTIPLES_LINES_C
