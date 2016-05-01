@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 17:51:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 12:31:20 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/01 19:27:43 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	ft_capture(t_shell *myshell)
 			print_key(buffer);
 		else if (buffer[0] == 27 && buffer[1] == 91) // si la touche est une fleche
 		{
-			if (buffer[2] == 68 && g_curseur > 0)// si la touche est gauche
+			if (buffer[2] == 68 && !(g_x == 0 && g_y == 0) && g_pos_line > 0)// si la touche est gauche
 				move_left();
-			else if (buffer[2] == 67 && g_curseur < (int)ft_strlen(g_line)) //droite
+			else if (buffer[2] == 67 && g_pos_line < (int)ft_strlen(g_line)) //droite
 				move_right();
 			else if (buffer[2] == 65 && myshell->historique != NULL) //haut
 				up_historique(myshell);
@@ -57,12 +57,14 @@ void	ft_capture(t_shell *myshell)
 			else if (buffer[2] == 70)
 				end_line();
 		}
-		else if (buffer[0] == 127 && g_curseur > 0)
+		else if (buffer[0] == 127 && !(g_x == 0 && g_y == 0))
 			delete_car();
 		else if (buffer[0] == 27 && buffer[1] == 27 && buffer[2] == 91 && buffer[3] == 67)
 			right_word();
 		else if (buffer[0] == 27 && buffer[1] == 27 && buffer[2] == 91 && buffer[3] == 68)
 			left_word();
+		else if (buffer[0] == 27 && buffer[1] == 27 && buffer[2] == 91 && buffer[3] == 66)
+			move_down();
 //		print_buffer(buffer);
 	}
 	if (buffer[0] == 4)
@@ -70,7 +72,5 @@ void	ft_capture(t_shell *myshell)
 		free(g_line);
 		g_line = ft_strdup("exit");
 	}
-	else
-		ft_putchar('\n');
-	g_curseur = 0;
+	ft_putchar('\n');
 }

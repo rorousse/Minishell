@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 12:31:34 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/01 17:57:48 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 # include <termcap.h>
 # include <curses.h>
 # include <fcntl.h>
+# include <sys/ioctl.h>
 
-// Librairies de test a supprimer a la fin
-
-# include <time.h>
+/*
+** ==========================TOUCHES OU COMBINAISONS SPECIFIQUES========================
+** alt + gauche OU alt + droite = se rendre sur le mot suivant a gauche/droite
+*/
 
 /*
 ** Les variables globales suivantes ont ete definies en tant que globales car
@@ -35,7 +37,9 @@
 */
 
 char	*g_line;
-int		g_curseur;
+int		g_pos_line;
+int		g_x;
+int		g_y;
 
 struct  s_historique
 {
@@ -153,6 +157,12 @@ void	right_word(void);
 void	left_word(void);
 
 /*
+** LINE_3_C
+*/
+
+void	move_down(void);
+
+/*
 ** MULTIPLES_LINES_C
 */
 
@@ -162,7 +172,7 @@ void	check_multiples_lines(t_shell *myshell);
 ** PROMPT_C
 */
 
-void	aff_prompt(void);
+void	aff_prompt(char *name);
 int		prompt(t_shell *myshell);
 
 /*

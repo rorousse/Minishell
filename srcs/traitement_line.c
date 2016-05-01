@@ -62,7 +62,7 @@ void		insertion_line(char c)
 
 	i = 0;
 	new = (char*)malloc((ft_strlen(g_line) + 2) * sizeof(char));
-	while (i < g_curseur)
+	while (i < g_pos_line)
 	{
 		new[i] = (g_line)[i];
 		i++;
@@ -85,7 +85,7 @@ void		deletion_line(void)
 
 	i = 0;
 	new = (char*)malloc(ft_strlen(g_line) * sizeof(char));
-	while (i < g_curseur)
+	while (i < g_pos_line)
 	{
 		new[i] = (g_line)[i];
 		i++;

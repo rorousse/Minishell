@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/30 14:48:35 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 11:54:17 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/01 18:07:11 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,13 @@ void	ft_sigint(int sig)
 	{
 		free(g_line);
 		g_line = ft_strdup("");
-		g_curseur = 0;
+		g_pos_line = 0;
+		g_x = 0;
+		g_y = 0;
 		ft_putchar('\n');
-		aff_prompt();
+		aff_prompt(NULL);
 	}
 }
-/*
-void	ft_sigquit(int sig)
-{
-	if (sig == SIGKILL)
-		ft_putstr("Boum\n");
-}
-*/
-	
 
 void	init_sig(void)
 {

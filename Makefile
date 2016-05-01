@@ -6,7 +6,7 @@
 #    By: rorousse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 03:14:08 by rorousse          #+#    #+#              #
-#    Updated: 2016/04/30 14:56:38 by rorousse         ###   ########.fr        #
+#    Updated: 2016/05/01 15:23:53 by rorousse         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,6 +25,7 @@ SRCNAME = 	main.c					\
 			ft_historique.c			\
 			line.c					\
 			line_2.c				\
+			line_3.c					\
 			test.c					\
 			ft_signal.c				\
 
