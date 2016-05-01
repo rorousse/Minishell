@@ -6,16 +6,16 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 18:18:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 11:10:33 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 18:21:21 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	delete_car(void)
+void	delete_car(t_shell *myshell)
 {
-	g_curseur--;
-	deletion_line();
+	(g_curseur)--;
+	deletion_line(myshell);
 	use_caps("le");
 	use_caps("dc");
 }

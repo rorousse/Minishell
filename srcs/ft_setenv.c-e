@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_2.c                                           :+:      :+:    :+:   */
+/*   ft_setenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/29 18:18:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 11:10:33 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/05 14:29:47 by rorousse          #+#    #+#             */
+/*   Updated: 2016/04/08 10:06:31 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../headers/minishell.h"
 
-void	delete_car(void)
+void	ft_setenv(char ***env, char **commande)
 {
-	g_curseur--;
-	deletion_line();
-	use_caps("le");
-	use_caps("dc");
+	if (commande[1] != NULL && commande[2] != NULL && commande[3] == NULL)
+		insert_env(env, commande[1], commande[2]);
+	else
+		ft_putstr_fd("Erreur : nombre d'arguments invalides\n", 2);
 }

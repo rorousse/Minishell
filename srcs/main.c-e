@@ -19,7 +19,7 @@ int			main(int argc, char **argv, char **environ)
 	(void)argc;
 	(void)argv;
 	myshell.env = ft_split_copy(environ);
-	g_curseur = 0;
+	myshell.curseur = 0;
 	g_line = ft_strdup("");
 	myshell.fd_histo = open("historique.txt", O_RDWR | O_CREAT, 0750);
 	myshell.historique = NULL;

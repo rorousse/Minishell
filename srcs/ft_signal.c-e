@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_2.c                                           :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/29 18:18:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 11:10:33 by rorousse         ###   ########.fr       */
+/*   Created: 2016/04/30 14:48:35 by rorousse          #+#    #+#             */
+/*   Updated: 2016/05/01 11:03:09 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	delete_car(void)
+void	ft_sigint(int sig)
 {
-	g_curseur--;
-	deletion_line();
-	use_caps("le");
-	use_caps("dc");
+	if (sig == SIGINT)
+	{
+		free(g_line);
+		g_line = ft_strdup("");
+		ft_putchar('\n');
+		aff_prompt();
+	}
 }
+
+void	init_sig(void)
+{
+	signal(SIGINT, ft_sigint);
+}
+		

@@ -164,3 +164,39 @@ srcs
 ls
 cd srcs
 exit
+ls
+cd srcs
+
+e
+exit
+ls
+
+exit
+ls
+cd srcs
+exit
+exit
+
+exit
+
+
+
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+addda
+exit
+exit
+exit
+exit
+ei
+exit
+exit
+exit
+exit

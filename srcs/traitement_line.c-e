@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:21:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 11:06:07 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/04/29 10:32:10 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	pathing(t_shell *myshell, char **commande)
 	ft_free_double_str(chemins);
 }
 
-void		insertion_line(char c)
+void		insertion_line(t_shell *myshell, char c)
 {
 	int		i;
 	char	*new;
@@ -78,7 +78,7 @@ void		insertion_line(char c)
 	g_line = new;
 }
 
-void		deletion_line(void)
+void		deletion_line(t_shell *myshell)
 {
 	int		i;
 	char	*new;

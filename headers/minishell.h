@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 11:27:21 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/30 17:04:24 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/01 11:42:55 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 ** difference si ce n'est la lourdeur d'utilisation des singletons )
 */
 
-int		g_interruption;
 char	*g_line;
+int		g_curseur;
 
 struct  s_historique
 {
@@ -49,7 +49,6 @@ typedef struct s_historique t_historique;
 struct	s_shell
 {
 	char			**env;
-	int				curseur;
 	int				fd_histo;
 	t_historique	*historique;
 };
@@ -129,6 +128,7 @@ void	ft_setenv(char ***env, char **commande);
 ** FT_SIGNAL_C
 */
 
+void	ft_sigquit(int sig);
 void	ft_sigint(int sig);
 void	init_sig(void);
 
@@ -136,17 +136,17 @@ void	init_sig(void);
 ** LINE_C
 */
 
-void	print_key(char buffer[4], t_shell *myshell);
+void	print_key(char buffer[4]);
 void	up_historique(t_shell *myshell);
 void	down_historique(t_shell *myshell);
-void	move_right(t_shell *myshell);
-void	move_left(t_shell *myshell);
+void	move_right(void);
+void	move_left(void);
 
 /*
 ** LINE_2_C
 */
 
-void	delete_car(t_shell *myshell);
+void	delete_car(void);
 
 /*
 ** MULTIPLES_LINES_C
@@ -165,8 +165,8 @@ int		prompt(t_shell *myshell);
 ** TRAITEMENT_LINE
 */
 
-void	insertion_line(t_shell *myshell, char c);
-void	deletion_line(t_shell *myshell);
+void	insertion_line(char c);
+void	deletion_line(void);
 void	traitement_line(t_shell *myshell);
 
 #endif
