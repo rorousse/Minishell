@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 18:18:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 19:37:46 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/02 13:31:31 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,28 @@
 
 void	delete_car(void)
 {
-	deletion_line();
+	int	i;
+
 	move_left();
-	write(1, g_line + g_pos_line, ft_strlen(g_line + g_pos_line));
+	deletion_line();
+	i = g_pos_line;
+	while (g_line[i])
+	{
+		ft_putchar(g_line[i]);
+		i++;
+	}
+	ft_putchar('_');
+	while (i >= g_pos_line)
+	{
+		use_caps("le");
+		i--;
+	}
 }
 
 void	start_line(void)
 {
-	while (!(g_x == 0 && g_y == 0))
-	{
-		use_caps("le");
-		g_pos_line--;
-	}
+	while ((!(g_x == 0 && g_y == 0)) && g_pos_line > 0)
+		move_left();
 }
 
 void	end_line(void)
@@ -34,10 +44,7 @@ void	end_line(void)
 
 	taille = ft_strlen(g_line);
 	while (g_pos_line < taille)
-	{
-		g_pos_line++;
-		use_caps("nd");
-	}
+		move_right();
 }
 
 void	right_word(void)

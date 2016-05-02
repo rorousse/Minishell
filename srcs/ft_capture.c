@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 17:51:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/01 19:27:43 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/02 12:50:34 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_capture(t_shell *myshell)
 			else if (buffer[2] == 70)
 				end_line();
 		}
-		else if (buffer[0] == 127 && !(g_x == 0 && g_y == 0))
+		else if (buffer[0] == 127 && g_pos_line != 0)
 			delete_car();
 		else if (buffer[0] == 27 && buffer[1] == 27 && buffer[2] == 91 && buffer[3] == 67)
 			right_word();
