@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 18:02:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/02 10:58:17 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/04 17:51:15 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,26 @@
 
 void	print_key(char buffer[4])
 {
-	struct winsize w;
+	struct winsize	w;
+	unsigned long	i;
 
+	i = 0;
 	ioctl(0, TIOCGWINSZ, &w);
-	use_caps("im");
 	ft_putchar(buffer[0]);
 	insertion_line(buffer[0]); 
 	g_pos_line++;
+	ft_putstr(g_line + g_pos_line);
 	g_x++;
 	if (g_x == w.ws_col)
 	{
 		g_x = 0;
 		g_y++;
 	}
-	use_caps("ei");
+	while (i < (ft_strlen(g_line) - g_pos_line))
+	{
+		use_caps("le");
+		i++;
+	}
 }
 
 void	up_historique(t_shell *myshell)

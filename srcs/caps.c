@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 16:01:41 by rorousse          #+#    #+#             */
-/*   Updated: 2016/04/30 14:20:57 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/04 19:26:44 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int    		init_term(struct termios *term)
         ft_putstr("Erreur : tgetent\n");
         return (-1);
     }
-	// pas leaks
     if (tcgetattr(0, term) == -1)
     {
         ft_putstr("Error : tcgetattr\n");
