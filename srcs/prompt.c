@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 12:04:27 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/02 10:32:30 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/11 17:37:41 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	aff_prompt(char *name)
 		getcwd(prompt, 256);
 	ft_putstr(prompt);
 	g_x = g_x + ft_strlen(prompt);
-	g_x = g_x + 3;
+	g_x = g_x + 4;
 	ft_putstr(": $>\033[37m");
 	free(prompt);
 }

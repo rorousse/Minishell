@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 18:02:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/05 18:16:36 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/11 18:19:55 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 void	print_key(char buffer[4])
 {
 	struct winsize	w;
-	unsigned long	i;
+	int				taille;
 
-	i = g_pos_line;
 	ioctl(0, TIOCGWINSZ, &w);
 	insertion_line(buffer[0]);
-	use_caps("ce");
-	while (g_line[i])
+	taille = g_pos_line;
+	start_line();
+	write(1, g_line, ft_strlen(g_line));
+	g_x = g_x + ft_strlen(g_line);
+	g_y = g_x / (w.ws_col + 1);
+	g_x = g_x % (w.ws_col + 1);
+	g_pos_line = ft_strlen(g_line);
+	if (g_x == w.ws_col)
 	{
-		ft_putchar(g_line[i]);
-		i++;
+		use_caps("do");
+		g_y++;
+		g_x = 0;
 	}
-	i = 0;
-	while (i < (ft_strlen(g_line) - g_pos_line))
-	{
-		use_caps("le");
-		i++;
-	}
-	move_right();
+	while (g_pos_line > taille + 1)
+		move_left();
 }
 
 void	up_historique(t_shell *myshell)
@@ -42,14 +43,14 @@ void	up_historique(t_shell *myshell)
 	ioctl(0, TIOCGWINSZ, &w);
 	free(g_line);
 	g_line = ft_strdup((myshell->historique)->commande);
-	while (!(g_x == 0  && g_y == 0) && g_pos_line > 0)
+	while ((g_x != 0 || g_y != 0) && g_pos_line > 0)
 		move_left();
 	use_caps("cd");
 	write(1, g_line, ft_strlen(g_line));
 	g_pos_line = ft_strlen(g_line);
 	g_x = g_x + g_pos_line;
-	g_x = g_x % w.ws_col;
 	g_y = g_x / w.ws_col;
+	g_x = g_x % w.ws_col;
 	if ((myshell->historique)->prec != NULL)
 		myshell->historique = (myshell->historique)->prec;
 }
@@ -61,7 +62,7 @@ void	down_historique(t_shell *myshell)
 	ioctl(0, TIOCGWINSZ, &w);
 	free(g_line);
 	g_line = ft_strdup((myshell->historique)->commande);
-	while ((!(g_x == 0  && g_y == 0)) && g_pos_line > 0)
+	while ((g_x != 0  || g_y != 0) && g_pos_line > 0)
 		move_left();
 	use_caps("cd");
 	write(1, g_line, ft_strlen(g_line));
@@ -82,10 +83,17 @@ void	move_left(void)
 	g_x--;
 	if (g_x == -1)
 	{
-		g_x = w.ws_col - 1;
+		g_x = 0;
 		g_y--;
+		use_caps("up");
+		while (g_x != w.ws_col - 1)
+		{
+			use_caps("nd");
+			g_x++;
+		}
 	}
-	use_caps("le");
+	else
+		use_caps("le");
 }
 
 void	move_right(void)
@@ -101,5 +109,6 @@ void	move_right(void)
 		g_y++;
 		use_caps("do");
 	}
-	use_caps("nd");
+	else
+		use_caps("nd");
 }

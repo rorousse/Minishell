@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 17:51:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/05 17:32:18 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/11 18:22:32 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void	ft_capture(t_shell *myshell)
 	{
 		init_capture(buffer);
 		read(0, buffer, 4);
-		if (ft_isprint(buffer[0])) // si la touche est affichable
+		if (buffer[0] == 'a')
+			ft_putnbr(g_pos_line);
+		else if (ft_isprint(buffer[0])) // si la touche est affichable
 			print_key(buffer);
 		else if (buffer[0] == 27 && buffer[1] == 91) // si la touche est une fleche
 		{
-			if (buffer[2] == 68 && !(g_x == 0 && g_y == 0) && g_pos_line > 0)// si la touche est gauche
+			if (buffer[2] == 68 && (g_x != 0 || g_y != 0) && g_pos_line > 0)// si la touche est gauche
 				move_left();
 			else if (buffer[2] == 67 && g_pos_line < (int)ft_strlen(g_line)) //droite
 				move_right();

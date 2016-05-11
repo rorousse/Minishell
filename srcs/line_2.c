@@ -6,7 +6,7 @@
 /*   By: rorousse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 18:18:00 by rorousse          #+#    #+#             */
-/*   Updated: 2016/05/04 16:59:59 by rorousse         ###   ########.fr       */
+/*   Updated: 2016/05/10 10:41:37 by rorousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	delete_car(void)
 
 void	start_line(void)
 {
-	while ((!(g_x == 0 && g_y == 0)) && g_pos_line > 0)
+	while ((g_x != 0 || g_y != 0) && g_pos_line > 0)
 		move_left();
 }
 
